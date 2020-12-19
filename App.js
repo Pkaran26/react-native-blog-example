@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { StatusBar, StyleSheet, Text, View, ScrollView, RefreshControl } from 'react-native'
-import Header from './components/header'
-import Footer from './components/footer'
+import { StatusBar, StyleSheet, Text, View, } from 'react-native'
+import Layout from './components/layout'
 import Card from './components/card'
+
 import axios from 'axios'
 
 export default function App() {
@@ -28,34 +28,16 @@ export default function App() {
 
 
   return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor="#d40644" barStyle={'light-content'} />
-      <Header />
-      <ScrollView
-        style={ styles.scroll }
-        refreshControl={
-          <RefreshControl colors={['#d40644']} refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      >
-        { posts.map((e, i)=>(
-          <Card
-            key={ i }
-            data={ e }
-          />
-        )) }
-      </ScrollView>
-      <Footer />
-    </View>
+    <Layout
+      refreshing={ refreshing }
+      onRefresh={ onRefresh }
+    >
+      { posts.map((e, i)=>(
+        <Card
+          key={ i }
+          data={ e }
+        />
+      )) }
+    </Layout>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  scroll: {
-    margin: 5,
-    marginBottom: 20,
-  }
-})
