@@ -3,7 +3,7 @@ import { StatusBar, StyleSheet, Text, View, ScrollView, RefreshControl } from 'r
 import Header from './header'
 import Footer from './footer'
 
-export default function Layout({ refreshing, onRefresh, children }) {
+export default function Layout({ refreshing, onRefresh, setPage, children }) {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="#d40644" barStyle={'light-content'} />
@@ -16,7 +16,9 @@ export default function Layout({ refreshing, onRefresh, children }) {
       >
         { children }
       </ScrollView>
-      <Footer />
+      <Footer
+        onTap={ setPage }
+      />
     </View>
   )
 }

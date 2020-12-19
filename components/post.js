@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Modal, ScrollView } from 'rea
 import moment from 'moment'
 import axios from 'axios'
 
-const Card = ({ data: { id, title, body } })=>{
+const Post = ({ data: { id, title, body } })=>{
   const [show, setShow] = useState(false)
   const [post, setPost] = useState('')
   const [comments, setComments] = useState([])
@@ -120,4 +120,4 @@ const styles = StyleSheet.create({
    }
 })
 
-export default Card
+export default Post
